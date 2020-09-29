@@ -4,7 +4,7 @@ def arithmetic_arranger(problems, solve = False):
     table = [[],[],[],[]]
     arranged_problems = ""
 
-    if len(problems) > 4:
+    if len(problems) > 5:
         print("Error: Too many problems.")
         return "Error: Too many problems."
     for idx,arg in enumerate(problems):
@@ -32,13 +32,11 @@ def arithmetic_arranger(problems, solve = False):
         
     if solve is False:
         table.remove(table[3])
-    for idx,row in enumerate(table):
-        for x in row:
-            arranged_problems += (x + "    ")
-        arranged_problems += "\n" if idx + 1 < len(table) else ""
+    for idx1,row in enumerate(table):
+        for idx2, x in enumerate(row):
+            arranged_problems += (x + "    ") if idx2 + 1 < len(row) else x
+        arranged_problems += "\n" if idx1 + 1 < len(table) else ""
 
 
     print(arranged_problems)
     return arranged_problems
-
-arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"])
